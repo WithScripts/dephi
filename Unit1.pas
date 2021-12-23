@@ -27,6 +27,7 @@ type
     DivideButton: TButton;
     CommaButton: TButton;
     AllClearButton: TButton;
+    PastValueLabel: TLabel;
     procedure AddValueButtonToEdit(Sender: TObject);
     procedure ClearButtonClick(Sender: TObject);
     procedure ActionButtonClick(Sender: TObject);
@@ -59,6 +60,7 @@ procedure TForm1.AllClearButtonClick(Sender: TObject);
 begin
   Edit1.Text := '';
   pastValue := 0;
+  PastValueLabel.Caption := '';
 end;
 
 procedure TForm1.ActionButtonClick(Sender: TObject);
@@ -70,6 +72,7 @@ begin
     pastValue := StrToFloat(Edit1.Text);
     Edit1.Text := '';
   end;
+  PastValueLabel.Caption := FloatToStr(pastValue) + ' ' +selectedAction;
   comma := false;
 end;
 procedure TForm1.ClearButtonClick(Sender: TObject);
@@ -110,9 +113,10 @@ procedure TForm1.ResultButtonClick(Sender: TObject);
 begin
   if not (pastValue = 0) then
   begin
-  ActionCase();
+  PastValueLabel.Caption := PastValueLabel.Caption + ' ' + Edit1.Text;
   Edit1.Text := ActionCase();
   comma := false;
+  pastValue := 0;
   end;
 end;
 

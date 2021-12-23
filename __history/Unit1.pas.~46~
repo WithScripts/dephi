@@ -26,12 +26,16 @@ type
     MultiplyButton: TButton;
     DivideButton: TButton;
     CommaButton: TButton;
+    AllClearButton: TButton;
+    PastValueLabel: TLabel;
     procedure AddValueButtonToEdit(Sender: TObject);
     procedure ClearButtonClick(Sender: TObject);
     procedure ActionButtonClick(Sender: TObject);
     procedure ResultButtonClick(Sender: TObject);
     procedure MinusButtonClick(Sender: TObject);
     procedure CommaButtonClick(Sender: TObject);
+    function ActionCase() : String;
+    procedure AllClearButtonClick(Sender: TObject);
   private
     { Private declarations }
     pastValue: real;
@@ -52,14 +56,23 @@ procedure TForm1.AddValueButtonToEdit(Sender: TObject);
 begin
   Edit1.Text := Edit1.Text + (Sender as TButton).Caption;
 end;
+procedure TForm1.AllClearButtonClick(Sender: TObject);
+begin
+  Edit1.Text := '';
+  pastValue := 0;
+  PastValueLabel.Caption := '';
+end;
+
 procedure TForm1.ActionButtonClick(Sender: TObject);
 begin
   selectedAction := ((Sender as TButton).Caption)[1];
   if Length(Edit1.Text) > 0 then
   begin
+    ResultButtonClick(Sender);
     pastValue := StrToFloat(Edit1.Text);
     Edit1.Text := '';
   end;
+  PastValueLabel.Caption := FloatToStr(pastValue) + ' ' +selectedAction;
   comma := false;
 end;
 procedure TForm1.ClearButtonClick(Sender: TObject);
@@ -98,20 +111,26 @@ end;
 
 procedure TForm1.ResultButtonClick(Sender: TObject);
 begin
-  var result, currentValue: real;
-  currentValue := StrToFloat(Edit1.Text);
-  if not (pastValue = Null) then
+  if not (pastValue = 0) then
   begin
-    case selectedAction of
-      '+' : result := pastValue + currentValue;
-      '-' : result := pastValue - currentValue;
-      '*' : result := pastValuew * currentValue;
-      '/' : result := pastValue / currentValue;
-    end;
-  Edit1.Text := FloatToStr(result);
+  ActionCase();
+  Edit1.Text := ActionCase();
   comma := false;
+  pastValue := 0;
   end;
 end;
 
+function TForm1.ActionCase() : String;
+  var resultValue, currentValue: real;
+  begin
+  currentValue := StrToFloat(Edit1.Text);
+  case selectedAction of
+      '+' : resultValue := pastValue + currentValue;
+      '-' : resultValue := pastValue - currentValue;
+      '*' : resultValue := pastValue * currentValue;
+      '/' : resultValue := pastValue / currentValue;
+    end;
+  Exit(FloatToStr(resultValue));
+end;
 end.
 
