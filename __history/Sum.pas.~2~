@@ -1,0 +1,16 @@
+unit Sum;
+
+interface
+uses SysUtils, Dialogs, Classes, Unit1;
+
+type
+TSum = class(TForm1);
+protected
+  function Calculation(firstValue, secondValue: real) : real; override;
+end;
+implementation
+  function TSum.Calculation(firstValue, secondValue: real) : real; override;
+  begin
+    Exit(firstValue + secondValue);
+  end;
+end.

@@ -1,0 +1,14 @@
+unit Sum;
+
+interface
+uses SysUtils, Dialogs, Classes, Unit1;
+
+type
+TSum = class(TForm1);
+end
+implementation
+  function Calculation(firstValue, secondValue: real) : real; overload;
+  begin
+    Exit(firstValue + secondValue);
+  end;
+end.

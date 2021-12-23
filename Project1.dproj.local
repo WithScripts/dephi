@@ -1,7 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>1899.12.30 00:00:00.000.280,=E:\dephi\Unit1.pas</Transaction>
     <Transaction>1899.12.30 00:00:00.000.594,E:\dephi\Project1.dproj=E:\dephi\Project1.dproj</Transaction>
-  </Transactions>
+    <Transaction>1899.12.30 00:00:00.000.280,=E:\dephi\Unit1.pas</Transaction>
+    <Transaction>2021.12.23 17:18:41.308,=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 17:18:58.445,E:\dephi\BaseClass.pas=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 17:23:09.028,E:\dephi\Sum.pas=E:\dephi\BaseClass.pas</Transaction>
+    <Transaction>2021.12.23 17:55:50.548,=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 17:56:08.804,E:\dephi\AbstractClass.pas=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:23:21.733,=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:24:16.433,E:\dephi\Division.pas=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:25:20.990,=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:25:31.568,E:\dephi\Multiply.pas=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:28:09.137,=E:\dephi\Unit2.pas</Transaction>
+    <Transaction>2021.12.23 18:28:17.907,E:\dephi\Sub.pas=E:\dephi\Unit2.pas</Transaction>
+  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="AbstractClass.pas"/>
+    <File Path="Sum.pas"/>
+    <File Path="Unit1.pas"/>
+    <File Path="Unit1.dfm"/>
+    <File Path="Division.pas"/>
+    <File Path="Multiply.pas"/>
+    <File Path="Sub.pas"/>
+  </ProjectSortOrder>
 </BorlandProject>

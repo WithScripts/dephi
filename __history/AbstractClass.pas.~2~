@@ -1,0 +1,9 @@
+unit AbstractClass;
+
+interface
+uses SysUtils, Dialogs, Classes;
+type
+  BaseClass = class
+   public
+   function Calculation:real; virtual; abstract;
+ end;

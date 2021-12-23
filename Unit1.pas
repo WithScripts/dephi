@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, AbstractClass, Sum, Division, Multiply, Sub;
 
 type
   TForm1 = class(TForm)
@@ -36,17 +36,24 @@ type
     procedure CommaButtonClick(Sender: TObject);
     function ActionCase() : String;
     procedure AllClearButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
     pastValue: real;
     selectedAction: char;
     comma:bool;
+
+
   public
     { Public declarations }
   end;
 
 var
   Form1: TForm1;
+  Sum: TSum;
+  Sub: TSub;
+  Mul: TMul;
+  Division: TDiv;
 
 implementation
 
@@ -93,6 +100,14 @@ begin
 
 end;
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  Sum := TSum.Create;
+  Sub := TSub.Create;
+  Mul := TMul.Create;
+  Division := TDiv.Create;
+end;
+
 procedure TForm1.MinusButtonClick(Sender: TObject);
 begin
   if Length(Edit1.Text) = 0 then
@@ -125,10 +140,10 @@ function TForm1.ActionCase() : String;
   begin
   currentValue := StrToFloat(Edit1.Text);
   case selectedAction of
-      '+' : resultValue := pastValue + currentValue;
-      '-' : resultValue := pastValue - currentValue;
-      '*' : resultValue := pastValue * currentValue;
-      '/' : resultValue := pastValue / currentValue;
+      '+' : resultValue := Sum.Calculation(pastValue, currentValue);
+      '-' : resultValue := Sub.Calculation(pastValue, currentValue);
+      '*' : resultValue := Mul.Calculation(pastValue, currentValue);
+      '/' : resultValue := Division.Calculation(pastValue, currentValue)	;
     end;
   Exit(FloatToStr(resultValue));
 end;

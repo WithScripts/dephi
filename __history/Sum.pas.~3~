@@ -1,0 +1,18 @@
+unit Sum;
+
+interface
+uses SysUtils, Dialogs, Classes, AbstractClass;
+
+type
+TSum = class(BaseClass);
+public
+  function Calculation:real;override;
+end;
+
+implementation
+  function TSum.Calculation(firstValue, secondValue: real) : real;
+  begin
+    Exit(firstValue + secondValue);
+  end;
+end;
+end.
